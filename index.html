@@ -31,6 +31,8 @@
     padding: 10px 22px; text-decoration: none; display: inline-block; transition: background 0.2s;
   }
   .nav-cta:hover { background: var(--gold-light); }
+  .nav-cta.waitlist { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+  .nav-cta.waitlist:hover { background: rgba(242,169,0,0.1); }
   .hero {
     min-height: 100vh; padding: 120px 5% 80px;
     position: relative; overflow: hidden; display: flex; align-items: center;
@@ -53,7 +55,8 @@
     font-family: var(--font-display); font-size: 12px; font-weight: 600;
     letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple-glow);
   }
-  .hero-eyebrow span { width: 6px; height: 6px; background: var(--purple-glow); border-radius: 50%; }
+  .hero-eyebrow.wait { background: rgba(242,169,0,0.12); border-color: rgba(242,169,0,0.35); color: var(--gold); }
+  .hero-eyebrow span { width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
   .hero-pretitle {
     font-family: var(--font-display); font-size: clamp(28px,4vw,42px);
     font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
@@ -70,6 +73,7 @@
     background: rgba(92,45,145,0.12); border: 1px solid rgba(139,92,246,0.25);
     padding: 20px 24px; margin-bottom: 36px; display: flex; align-items: flex-start; gap: 14px;
   }
+  .candidatura-box.wait { background: rgba(242,169,0,0.08); border-color: rgba(242,169,0,0.3); }
   .candidatura-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
   .candidatura-box p { font-size: 15px; color: var(--gray-light); line-height: 1.6; }
   .candidatura-box strong { color: var(--white); }
@@ -83,6 +87,13 @@
   .btn-primary::after { content: ''; position: absolute; inset: -3px; border: 2px solid rgba(242,169,0,0.3); transition: inset 0.2s; }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
   .btn-primary:hover::after { inset: -6px; }
+  .btn-outline {
+    background: transparent; color: var(--gold); border: 1px solid var(--gold);
+    font-family: var(--font-display); font-weight: 800; font-size: 16px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 17px 40px; text-decoration: none; display: inline-block; transition: all 0.2s;
+  }
+  .btn-outline:hover { background: rgba(242,169,0,0.1); }
   .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 48px; }
   .hero-stat-num { font-family: var(--font-display); font-size: 30px; font-weight: 800; color: var(--gold); display: block; line-height: 1; }
   .hero-stat-label { font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-top: 4px; }
@@ -152,11 +163,12 @@
   .format-insight-icon { font-size: 28px; color: var(--purple-glow); flex-shrink: 0; }
   .format-insight p { font-size: 15px; color: var(--gray-light); line-height: 1.6; }
   .format-insight strong { color: var(--white); }
+
   .pricing-wrapper { max-width: 540px; }
   .pricing-simple { font-size: 16px; color: var(--gray-light); line-height: 1.7; padding: 28px 32px; background: var(--navy-mid); border: 1px solid rgba(242,169,0,0.2); }
   .pricing-simple strong { color: var(--white); }
   .pricing-amount-inline { font-family: var(--font-display); font-size: 52px; font-weight: 900; color: var(--gold); display: block; line-height: 1; margin: 12px 0 4px; }
-  .pricing-period-inline { font-size: 18px; color: var(--gray); }
+  .pricing-period-inline { font-size: 16px; color: var(--gray); }
   .pricing-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 20px 0; }
   .pricing-includes { list-style: none; margin-bottom: 24px; }
   .pricing-includes li { font-size: 15px; color: var(--gray-light); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 10px; }
@@ -164,7 +176,11 @@
   .pricing-aviso { margin-top: 14px; padding: 16px 20px; background: rgba(92,45,145,0.08); border-left: 3px solid var(--purple-glow); font-size: 14px; color: var(--gray-light); line-height: 1.6; }
   .pricing-aviso strong { color: var(--white); }
 
-  /* OUTRAS TURMAS */
+  .waitlist-box { max-width: 620px; background: var(--navy-mid); border: 1px solid rgba(242,169,0,0.25); padding: 32px 36px; }
+  .waitlist-box .wl-label { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .waitlist-box p { font-size: 16px; color: var(--gray-light); line-height: 1.7; margin-bottom: 22px; }
+  .waitlist-box strong { color: var(--white); }
+
   .other-courses { background: var(--navy-mid); }
   .other-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
   .other-card {
@@ -179,7 +195,10 @@
   }
   .other-card:hover::before { transform: scaleX(1); }
   .other-card:hover { background: var(--navy-light); border-color: rgba(242,169,0,0.15); }
-  .other-card-label { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: block; }
+  .other-card-label { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+  .other-card-tag { font-size: 9px; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.06em; }
+  .other-card-tag.active { background: rgba(242,169,0,0.18); color: var(--gold); }
+  .other-card-tag.soon { background: rgba(255,255,255,0.06); color: var(--gray); }
   .other-card-title { font-family: var(--font-display); font-size: 28px; font-weight: 900; text-transform: uppercase; color: var(--white); line-height: 1; margin-bottom: 10px; display: block; }
   .other-card-desc { font-size: 13px; color: var(--gray); line-height: 1.6; display: block; margin-bottom: 18px; }
   .other-card-link { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 6px; }
@@ -244,8 +263,7 @@
     <span class="hero-title">Laterais</span>
     <p class="hero-subtitle">Um programa de <strong>6 meses</strong> para atletas que querem parar de jogar no automático e começar a <strong>entender o jogo de verdade</strong> na posição de lateral.</p>
     <div class="candidatura-box">
-      <div class="candidatura-icon">🎯</div>
-      <p><strong>As vagas são limitadas e por seleção.</strong> Não é qualquer atleta que entra. Ao clicar abaixo, você preenche um formulário e a nossa equipe entra em contato para uma conversa individual.</p>
+      <div class="candidatura-icon">🎯</div><p><strong>As vagas são limitadas e por seleção.</strong> Não é qualquer atleta que entra. Ao clicar abaixo, você preenche um formulário e a nossa equipe entra em contato para uma conversa individual.</p>
     </div>
     <div class="hero-actions">
       <a href="https://basedecampeao.com.br/bdc-insight" target="_blank" class="btn-primary">Quero me candidatar</a>
@@ -254,8 +272,7 @@
       <div><span class="hero-stat-num">6</span><span class="hero-stat-label">Meses de programa</span></div>
       <div class="stat-sep"></div>
       <div><span class="hero-stat-num">13+</span><span class="hero-stat-label">Anos de idade</span></div>
-      <div class="stat-sep"></div>
-      <div><span class="hero-stat-num">Ago a Jan</span><span class="hero-stat-label">Agosto 2026 a Janeiro 2027</span></div>
+      <div class="stat-sep"></div><div><span class="hero-stat-num">Seleção</span><span class="hero-stat-label">Vagas limitadas por candidatura</span></div>
     </div>
   </div>
 </section>
@@ -299,7 +316,7 @@
     <div class="sel-step"><div class="sel-num">PASSO 01</div><div class="sel-title">Candidatura</div><div class="sel-desc">Você preenche o formulário com suas informações e nos conta um pouco sobre o seu momento no futebol.</div><div class="sel-arrow">›</div></div>
     <div class="sel-step"><div class="sel-num">PASSO 02</div><div class="sel-title">Análise</div><div class="sel-desc">Nossa equipe analisa o seu perfil e verifica se o programa está alinhado com o seu momento atual.</div><div class="sel-arrow">›</div></div>
     <div class="sel-step"><div class="sel-num">PASSO 03</div><div class="sel-title">Conversa</div><div class="sel-desc">Entramos em contato para uma conversa individual para entender seus objetivos e apresentar o programa.</div><div class="sel-arrow">›</div></div>
-    <div class="sel-step"><div class="sel-num">PASSO 04</div><div class="sel-title">Confirmação</div><div class="sel-desc">Confirmada a vaga, você inicia o programa junto com a turma em agosto de 2026.</div></div>
+    <div class="sel-step"><div class="sel-num">PASSO 04</div><div class="sel-title">Confirmação</div><div class="sel-desc">Confirmada a vaga, você inicia o programa junto com a turma.</div></div>
   </div>
   <div style="margin-top: 32px; text-align: center;">
     <a href="https://basedecampeao.com.br/bdc-insight" target="_blank" class="btn-primary">Preencher o formulário de candidatura</a>
@@ -310,7 +327,7 @@
   <div class="section-label">Conteúdo</div>
   <h2 class="section-title">Mês a mês</h2>
   <p class="section-sub">Cada mês tem um tema central. A construção é progressiva e pensada especificamente para a posição.</p>
-  <div class="months-grid"><div class="month-card"><div class="month-period">Agosto 2026 — Mês 01</div><div class="month-title">Base Mental e Identidade</div><ul class="month-topics"><li>Comportamento e postura do lateral</li><li>Preparação para o lance</li><li>Concentração e presença em campo</li><li>Gestão de expectativas e mentalidade</li></ul></div><div class="month-card"><div class="month-period">Setembro 2026 — Mês 02</div><div class="month-title">Defesa e Duelos</div><ul class="month-topics"><li>Defender a área e a linha perto e longe</li><li>Duelos individuais 1x1</li><li>Leitura do adversário direto</li><li>Decisão de quando intervir e quando recuar</li></ul></div><div class="month-card"><div class="month-period">Outubro 2026 — Mês 03</div><div class="month-title">Entradas no Último Terço</div><ul class="month-topics"><li>Tipos de entrada no último terço ofensivo</li><li>Cruzamentos: quando e como executar</li><li>Leitura do momento de avançar</li><li>Sincronização com os companheiros no ataque</li></ul></div><div class="month-card"><div class="month-period">Novembro 2026 — Mês 04</div><div class="month-title">Construção por Dentro</div><ul class="month-topics"><li>Participação na construção pelo interior do campo</li><li>Recepção e distribuição sob pressão</li><li>Leitura do espaço e do tempo de jogo</li><li>Ligação entre o setor defensivo e o ofensivo</li></ul></div><div class="month-card special"><div class="month-period">Dezembro 2026 — Mês 05</div><div class="month-title">Convidados</div><p class="month-special-text">Encontros com profissionais e referências da posição. Experiências reais e perspectivas do futebol de alto rendimento.</p></div><div class="month-card finale"><div class="month-period">Janeiro 2027 — Mês 06</div><div class="month-title">Planejamento da Temporada 2027</div><ul class="month-topics"><li>Revisão da evolução ao longo do programa</li><li>Checkpoint final: início versus fim</li><li>Definição de objetivos para a temporada</li><li>Estratégia individual para 2027</li></ul></div></div>
+  <div class="months-grid"><div class="month-card"><div class="month-period">Mês 01</div><div class="month-title">Base Mental e Identidade</div><ul class="month-topics"><li>Comportamento e postura do lateral</li><li>Preparação para o lance</li><li>Concentração e presença em campo</li><li>Gestão de expectativas e mentalidade</li></ul></div><div class="month-card"><div class="month-period">Mês 02</div><div class="month-title">Defesa e Duelos</div><ul class="month-topics"><li>Defender a área e a linha perto e longe</li><li>Duelos individuais 1x1</li><li>Leitura do adversário direto</li><li>Decisão de quando intervir e quando recuar</li></ul></div><div class="month-card"><div class="month-period">Mês 03</div><div class="month-title">Entradas no Último Terço</div><ul class="month-topics"><li>Tipos de entrada no último terço ofensivo</li><li>Cruzamentos: quando e como executar</li><li>Leitura do momento de avançar</li><li>Sincronização com os companheiros no ataque</li></ul></div><div class="month-card"><div class="month-period">Mês 04</div><div class="month-title">Construção por Dentro</div><ul class="month-topics"><li>Participação na construção pelo interior do campo</li><li>Recepção e distribuição sob pressão</li><li>Leitura do espaço e do tempo de jogo</li><li>Ligação entre o setor defensivo e o ofensivo</li></ul></div><div class="month-card special"><div class="month-period">Mês 05</div><div class="month-title">Convidados</div><p class="month-special-text">Encontros com profissionais e referências da posição. Experiências reais e perspectivas do futebol de alto rendimento.</p></div><div class="month-card finale"><div class="month-period">Mês 06</div><div class="month-title">Planejamento da Temporada</div><ul class="month-topics"><li>Revisão da evolução ao longo do programa</li><li>Checkpoint final: início versus fim</li><li>Definição de objetivos para a temporada</li><li>Estratégia individual para a próxima temporada</li></ul></div></div>
 </section>
 
 <section class="format">
@@ -335,8 +352,8 @@
   <p class="section-sub">Seis meses de desenvolvimento focado na sua posição.</p>
   <div class="pricing-wrapper">
     <div class="pricing-simple">
-      <div class="pricing-amount-inline">R$ 350 <span class="pricing-period-inline">/mês</span></div>
-      <p style="margin-top: 8px; color: var(--gray-light);">6 meses de programa, de agosto de 2026 a janeiro de 2027.</p>
+      <div class="pricing-amount-inline">12x de R$ 190</div>
+      <p style="margin-top: 8px; color: var(--gray-light);">Via cartão de crédito. Programa completo de 6 meses.</p>
       <div class="pricing-divider"></div>
       <ul class="pricing-includes">
         <li>Acesso completo ao programa por 6 meses</li>
@@ -344,12 +361,9 @@
         <li>Desafios práticos de leitura de jogo</li>
         <li>Comunidade fechada da turma</li>
         <li>Checkpoints estruturados de evolução</li>
-        <li>Planejamento individual para a temporada 2027</li>
+        <li>Planejamento individual para a próxima temporada</li>
       </ul>
       <a href="https://basedecampeao.com.br/bdc-insight" target="_blank" class="btn-primary" style="display: block; text-align: center;">Quero me candidatar</a>
-    </div>
-    <div class="pricing-aviso">
-      <strong>Prefere pagar à vista?</strong> Informe na candidatura e apresentamos uma condição especial para pagamento único pelos 6 meses.
     </div>
   </div>
 </section>
@@ -359,20 +373,20 @@
   <h2 class="section-title">Conheça também</h2>
   <p class="section-sub">O programa Formando tem turmas para todas as posições. Cada uma com conteúdo específico para a sua função em campo.</p>
   <div class="other-grid"><a href="https://formandodefensores.basedecampeao.com.br/" class="other-card">
-          <span class="other-card-label">Formando</span>
+          <span class="other-card-label"><span>Formando</span><span class="other-card-tag soon">Em breve</span></span>
           <span class="other-card-title">Defensores</span>
           <span class="other-card-desc">Posicionamento, defesa da área, construção e leitura defensiva.</span>
-          <span class="other-card-link">Conhecer a turma &rsaquo;</span>
+          <span class="other-card-link">Entrar na lista &rsaquo;</span>
         </a><a href="https://formandomeias.basedecampeao.com.br/" class="other-card">
-          <span class="other-card-label">Formando</span>
+          <span class="other-card-label"><span>Formando</span><span class="other-card-tag soon">Em breve</span></span>
           <span class="other-card-title">Meias</span>
           <span class="other-card-desc">Visão de jogo, duelos, movimentações e chegada no último terço.</span>
-          <span class="other-card-link">Conhecer a turma &rsaquo;</span>
+          <span class="other-card-link">Entrar na lista &rsaquo;</span>
         </a><a href="https://formandoatacantes.basedecampeao.com.br/" class="other-card">
-          <span class="other-card-label">Formando</span>
+          <span class="other-card-label"><span>Formando</span><span class="other-card-tag soon">Em breve</span></span>
           <span class="other-card-title">Atacantes</span>
           <span class="other-card-desc">Movimentação, duelos, finalização e inteligência ofensiva.</span>
-          <span class="other-card-link">Conhecer a turma &rsaquo;</span>
+          <span class="other-card-link">Entrar na lista &rsaquo;</span>
         </a></div>
 </section>
 
@@ -389,7 +403,7 @@
   <div class="final-cta-bg"></div>
   <div class="section-label">Próximo passo</div>
   <h2 class="section-title">Pronto para evoluir<br>de verdade?</h2>
-  <p class="section-sub" style="margin: 0 auto 28px;">Agosto de 2026. Turma exclusiva de laterais. Vagas limitadas por seleção.</p>
+  <p class="section-sub" style="margin: 0 auto 28px;">Turma exclusiva de laterais. Vagas limitadas por seleção.</p>
   <div class="final-urgency">Candidaturas abertas — vagas limitadas</div>
   <br><br>
   <a href="https://basedecampeao.com.br/bdc-insight" target="_blank" class="btn-primary">Preencher o formulário de candidatura</a>
