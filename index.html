@@ -29,6 +29,7 @@ src="https://www.facebook.com/tr?id=2484343218972109&ev=PageView&noscript=1"
 </script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="dark">
 <title>Oferta Black só hoje · Formando Laterais com mais de 70% de desconto</title>
 <meta name="description" content="Última oportunidade: Formando Laterais com mais de 70% de desconto. Só hoje, até as 19h.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,8 +42,14 @@ src="https://www.facebook.com/tr?id=2484343218972109&ev=PageView&noscript=1"
     --white:#FFFFFF; --gray:#8A9BB5; --gray-light:#C4CFDE;
     --fd:'Barlow Condensed',sans-serif; --fb:'Barlow',sans-serif;
   }
-  html { scroll-behavior:smooth; }
+  :root { color-scheme:dark; }
+  html { scroll-behavior:smooth; background:var(--navy); color:var(--white); }
   body { background:var(--navy); color:var(--white); font-family:var(--fb); line-height:1.5; }
+  /* cor explícita nos textos que antes dependiam de herança */
+  h1, h2, h3, .mod-t, .box, .box label, .box h3, .modal { color:var(--white); }
+  h1 em { color:var(--gold); }
+  .box .sub { color:var(--gray-light); }
+  .box .priv { color:var(--gray); }
   body.lock { overflow:hidden; }
 
   .logo { display:block; width:40px; height:40px; background-size:contain; background-repeat:no-repeat; background-position:center; flex-shrink:0; }
